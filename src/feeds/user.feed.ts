@@ -27,4 +27,22 @@ export class UserFeed extends Feed<UserFeedResponse, UserFeedResponseItemsItem> 
     const body = await this.request();
     return body.items;
   }
+
+  async storyRequest() {
+    const { body } = await this.client.request.send<UserFeedResponse>({
+      url: `/api/v1/feed/user/${this.id}/story`,
+      qs: {
+        max_id: this.nextMaxId,
+      },
+    });
+    this.state = body;
+    return body;
+  }
+
+  async storyItems() {
+    const body = await this.storyRequest();
+    if (!body.reel) return [];
+    return body.reel.items;
+  }
+
 }
