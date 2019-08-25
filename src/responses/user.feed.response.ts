@@ -15,6 +15,7 @@ export interface UserFeedResponse {
   status: string;
 }
 export interface UserFeedResponseItemsItem {
+  expiring_at: number;
   taken_at: number;
   pk: string;
   id: string;
