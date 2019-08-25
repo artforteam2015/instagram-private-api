@@ -1,4 +1,12 @@
 export interface UserFeedResponse {
+  reel?: {
+    items: UserFeedResponseItemsItem[];
+    num_results: number;
+    more_available: boolean;
+    next_max_id: string;
+    auto_load_more_enabled: boolean;
+    status: string;
+  };
   items: UserFeedResponseItemsItem[];
   num_results: number;
   more_available: boolean;
